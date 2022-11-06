@@ -26,6 +26,10 @@ const ProductSchema= new mongoose.Schema(
         },
         categories: {
             type: Array,
+        },
+        inStock: {
+            type: Boolean,
+            default: true
         }
     },
     {
