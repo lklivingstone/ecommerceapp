@@ -1,26 +1,39 @@
 import { styled } from '@material-ui/core';
 
-export const Container= styled("div")({
+export const Container= styled("div")(({theme}) => ({
     display: "flex",
     padding: "20px",
-    justifyContent: "space-between",
-})
+    justifyContent: "space-around",
+    [theme.breakpoints.down('sm')]: {
+        flexDirection: "column",
+    }
+}))
 
-export const Wrapper = styled("div")({
-    flex: "1",
+export const Wrapper = styled("div")(({theme}) => ({
     margin: "3px",
-    height: "70vh",
+    [theme.breakpoints.up('md')]: {
+        height: "70vh",
+        flex: "1",
+    },
+    [theme.breakpoints.down('md')]: {
+        height: "400px",
+    },
     position: "relative",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
-})
+    justifyContent: "center",
+}))
 
-export const Image = styled("img")({
-    width: "80%",
-    height: "80%",
+export const Image = styled("img")(({theme}) => ({
+    [theme.breakpoints.up('md')]: {
+        // height: "100%",
+        height: "80%",
+    },
+    [theme.breakpoints.down('md')]: {
+        height: "100%",
+    },
     objectFit: "cover",
-})
+}))
 
 export const InfoCont = styled("div")({
     position: "absolute",
@@ -37,7 +50,8 @@ export const InfoCont = styled("div")({
 export const Title = styled("h1")({
     fontWeight: 500,
     fontSize: "21px",
-    letterSpacing: "3px"
+    letterSpacing: "3px",
+    color: " black"
 })
 
 export const Button = styled("Button")({

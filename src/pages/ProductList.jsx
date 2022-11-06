@@ -1,11 +1,13 @@
 import Footer from "../components/Footer/Footer"
-import Navbar from "../components/Navbar/Navbar"
+import {Navbar} from "../components/Navbar/Navbar"
 import { ThemeProvider } from '@material-ui/core'; 
 import theme from '../styles/theme/theme';
 import { CssBaseline } from '@material-ui/core';
 import Slider from "../components/Slider/Slider";
 import { styled } from "@mui/system";
 import Products from "../components/Products/Products";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 
 
@@ -28,20 +30,39 @@ const Filter = styled("div")({
 })
 
 export const ProductList = () => {
+    
+    const location= useLocation();
+    const category= location.pathname.split("/")[2];
+    const [filters, setFilters]= useState({});
+    const [sort, setSort]= useState("newest");
+
+    const handleChange= (e) => {
+        setFilters({
+            ...filters,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSortChange = (e) => {
+        setSort(
+            e.target.value
+        )
+    }
+
     return (
         <>
         <CssBaseline />
         <ThemeProvider theme={theme}>
             <Navbar />
             <Title>
-                Dresses
+                {category}'s
             </Title>
             <FilterContainer>
                 <Filter>
                     <FilterText>
                         Filter Products:
                     </FilterText>
-                    <select style={{padding:"5px 10px", margin:"0px 5px"}}>
+                    <select style={{padding:"5px 10px", margin:"5px 5px"}} name="color" onChange= {handleChange}>
                         <option disabled selected>Color</option>
                         <option>White</option>
                         <option>Black</option>
@@ -50,7 +71,7 @@ export const ProductList = () => {
                         <option>Yellow</option>
                         <option>Green</option>
                     </select>
-                    <select style={{padding:"5px 10px"}}>
+                    <select style={{padding:"5px 10px", margin:"5px 5px"}} name="size" onChange={handleChange}>
                         <option disabled selected>Size</option>
                         <option>XS</option>
                         <option>S</option>
@@ -64,16 +85,14 @@ export const ProductList = () => {
                     <FilterText>
                         Sort Products:
                     </FilterText>
-                    <select style={{padding:"5px 10px", margin:"0px 5px"}}>
-                        <option disabled selected></option>
-                        <option>Newest</option>
-                        <option>Price (asc.)</option>
-                        <option>Price (dsc.)</option>
-                        <option>Highest Selling</option>
+                    <select style={{padding:"5px 10px", margin:"0px 5px"}} onChange={handleSortChange}>
+                        <option value="newest">Newest</option>
+                        <option value="price-asc">Price (asc.)</option>
+                        <option value="price-dsc">Price (dsc.)</option>
                     </select>
                 </Filter>
             </FilterContainer>
-            <Products />
+            <Products category={category} filters={filters} sort={sort} />
             <Footer />
         </ThemeProvider>
         </>

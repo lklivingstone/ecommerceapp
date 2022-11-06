@@ -2,7 +2,10 @@ import { Button, CssBaseline } from "@mui/material"
 import { styled } from "@mui/system"
 import { ThemeProvider } from '@material-ui/core'; 
 import theme from '../styles/theme/theme';
-
+import { register } from "../redux/apiCalls";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled("div")({
     width: "100%",
@@ -67,6 +70,23 @@ const ButtonDiv = styled("div")({
 
 
 export const Register = () => {
+
+    const [username, setUsername]= useState("")
+    const [password, setPassword]= useState("")
+    const [firstname, setFirstname]= useState("")
+    const [lastname, setLastname]= useState("")
+    const [email, setEmail]= useState("")
+
+    const navigate= useNavigate()
+
+    // const dispatch= useDispatch()
+    // const { isFetching, error }= useSelector(state=>state.user)
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        register({ firstname, lastname, username, email, password })
+        navigate("/login")
+    }
     return (
         <>
             <CssBaseline />
@@ -77,18 +97,18 @@ export const Register = () => {
                             CREATE AN ACCOUNT
                         </Title>
                         <Form>
-                            <Input placeholder="First Name" />
-                            <Input placeholder="Last Name" />
-                            <Input placeholder="Username" />
-                            <Input placeholder="E-Mail" />
-                            <Input placeholder="Password" />
-                            <Input placeholder="Confirm Password" />
+                            <Input placeholder="First Name" onChange={(e)=>setFirstname(e.target.value)}/>
+                            <Input placeholder="Last Name" onChange={(e)=>setLastname(e.target.value)}/>
+                            <Input placeholder="Username" onChange={(e)=>setUsername(e.target.value)}/>
+                            <Input placeholder="E-Mail" onChange={(e)=>setEmail(e.target.value)}/>
+                            <Input placeholder="Password"/>
+                            <Input placeholder="Confirm Password" onChange={(e)=>setPassword(e.target.value)} />
                             <TermsandCondition>
                                 By creating an account <b>PRIVACY POLICY</b>
                             </TermsandCondition>
                         </Form>
                         <ButtonDiv>
-                            <SubmitButton variant="filled">Create</SubmitButton>
+                            <SubmitButton variant="filled" onClick={handleClick} >REGISTER</SubmitButton>
                         </ButtonDiv>
                     </Container>
                 </Wrapper>

@@ -5,10 +5,15 @@ import { products } from "../../data/data";
 import { Grid, Container } from "@mui/material";
 import { Box } from "@mui/system";
 import {Typography} from "@material-ui/core";
-import { Image, ShoppingIconContainer, FavIconContainer, ShareIconContainer, ShoppingButton, ShareButton, DescriptionBox } from "./ProductComponents";
+import { Image, ShoppingIconContainer, FavIconContainer, SearchIconContainer, ShoppingButton, SearchButton, DescriptionBox } from "./ProductComponents";
 import { FavButton } from "./ProductComponents";
 import { IconLayer } from "./ProductComponents";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import DesktopIconLayer from "./DesktopIconLayer";
+import MobileIconLayer from "./MobileProduct";
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -19,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "center"
     },
+
     paper: {
         // width:"100%",
         // height:"100%",
@@ -29,14 +35,55 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+export default function Products({category, filters, sort}) {
 
+    const [productList, setProductList]= useState([]);
+    const [filteredProducts, setFilteredProducts]= useState([]);
 
+    useEffect(() => {
+        const getProducts= async () => {
+            try{
+                const res= await axios.get(category ? `http://localhost:5000/api/products?category=${category}` : "http://localhost:5000/api/products")
+                setProductList(res.data)
+            } catch(err) {
 
-export default function Products() {
+            }
+        }
+        getProducts();
+    }, [category])
+
+    useEffect(() => {
+        category && setFilteredProducts(
+            productList.filter(item => 
+                Object.entries(filters).every(([key, value]) =>
+                    item[key].includes(value)
+                )
+            )
+        )
+    }, [category, filters, productList])
+
+    useEffect(() => {
+        if (sort === "newest") {
+            setFilteredProducts((prev)=>
+                [...prev].sort((a, b)=>a.createAt - b.createdAt)
+            )
+        }
+        else if (sort === "price-asc") {
+            setFilteredProducts((prev)=>
+                [...prev].sort((a,b)=>a.price- b.price)
+                )
+        }
+        else {
+            setFilteredProducts((prev)=>
+                [...prev].sort((a,b)=>b.price- a.price)
+                )
+        }
+    }, [sort])
+
     const classes= useStyles();
 
     const theme= useTheme();
-    const matches= useMediaQuery(theme.breakpoints.down('md'));
+    const matches= useMediaQuery(theme.breakpoints.up('md'));
 
     // Shopping Button Hover -->
 
@@ -82,7 +129,47 @@ export default function Products() {
 
     // <-- Share Hover ends here
 
-    const renderProducts= products.map((product) => (
+    
+    const renderProducts= category ? filteredProducts.map((product) => (
+        <Grid item
+        key={product.id}
+        display="flex"
+        alignItems="center"
+        justifyContent={"center"}
+        xs={12}
+        sm={6}
+        md={4}>
+            <Box position="relative" display="flex" flexDirection={"column"} alignItems="center" justifyContent={"center"}>
+                <Box padding="5px 5px">
+                    <Image src={product.img} />
+                    <IconLayer>
+                    <Link to={`/product/${product._id}`}>
+                        <ShoppingIconContainer onMouseEnter= {handleShoppingMouseEnter} onMouseLeave= {handleShoppingMouseLeave} enter={showShoppingOptions}>
+                            <ShoppingButton enter={showShoppingOptions} isAdded={1} />
+                        </ShoppingIconContainer>
+                    </Link>
+                    {/* <FavIconContainer onMouseEnter= {handleFavMouseEnter} onMouseLeave= {handleFavMouseLeave} enter={showFavOptions}>
+                        <FavButton enter={showFavOptions} isFav= {1} />
+                    </FavIconContainer> */}
+                    <Link to={`/product/${product._id}`}>
+                        <SearchIconContainer onMouseEnter= {handleShareMouseEnter} onMouseLeave= {handleShareMouseLeave} enter={showShareOptions}>
+                            <SearchButton enter={showShareOptions} />
+                        </SearchIconContainer>
+                    </Link>
+                </IconLayer>
+                </Box>
+                <DescriptionBox>
+                    <p style={{fontSize: "14px", fontWeight: 700, margin: "5px 0px"}}>
+                        {product.title}
+                    </p>
+                    <Typography variant="p">
+                        Rs {product.price}
+                    </Typography>
+                </DescriptionBox>
+            </Box>
+         </Grid> 
+    ))
+    : productList.map((product) => (
         <Grid item
         key={product.id}
         display="flex"
@@ -98,24 +185,26 @@ export default function Products() {
                         <ShoppingIconContainer onMouseEnter= {handleShoppingMouseEnter} onMouseLeave= {handleShoppingMouseLeave} enter={showShoppingOptions}>
                             <ShoppingButton enter={showShoppingOptions} isAdded={1} />
                         </ShoppingIconContainer>
-                        <FavIconContainer onMouseEnter= {handleFavMouseEnter} onMouseLeave= {handleFavMouseLeave} enter={showFavOptions}>
+                        {/* <FavIconContainer onMouseEnter= {handleFavMouseEnter} onMouseLeave= {handleFavMouseLeave} enter={showFavOptions}>
                             <FavButton enter={showFavOptions} isFav= {1} />
-                        </FavIconContainer>
-                        <ShareIconContainer onMouseEnter= {handleShareMouseEnter} onMouseLeave= {handleShareMouseLeave} enter={showShareOptions}>
-                            <ShareButton enter={showShareOptions} />
-                        </ShareIconContainer>
+                        </FavIconContainer> */}
+                        <Link to={`/product/${product._id}`}>
+                            <SearchIconContainer onMouseEnter= {handleShareMouseEnter} onMouseLeave= {handleShareMouseLeave} enter={showShareOptions}>
+                                <SearchButton enter={showShareOptions} />
+                            </SearchIconContainer>
+                        </Link>
                     </IconLayer>
                 </Box>
                 <DescriptionBox>
                     <p style={{fontSize: "14px", fontWeight: 700, margin: "5px 0px"}}>
-                        {product.name}
+                        {product.title}
                     </p>
                     <Typography variant="p">
                         Rs {product.price}
                     </Typography>
                 </DescriptionBox>
             </Box>
-         </Grid>
+         </Grid> 
     ));
 
     return (

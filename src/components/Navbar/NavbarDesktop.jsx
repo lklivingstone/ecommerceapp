@@ -6,10 +6,13 @@ import { ThemeProvider } from '@material-ui/core';
 import useStyles from '../../styles/Navbar/styles';
 import { MyList } from '../../styles/Navbar/Navbar';
 import { ListItemButton } from '@mui/material';
-import Tools from './Tools';
+import {Tools} from "./NavbarTools"
+import { FavoriteBorderOutlined, FavoriteOutlined, ShoppingCartOutlined } from "@material-ui/icons";
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import Badge from '@mui/material/Badge';
 
 
-export default function Navbar({ matches }) {
+export const NavbarDesktop = () => {
 
     const classes= useStyles();
     
@@ -36,7 +39,7 @@ export default function Navbar({ matches }) {
                             </ListItemIcon>
                         </ListItemButton>
                     </MyList>
-                    <Tools macthes={matches}/>
+                    <Tools />
                 </Toolbar>
             </AppBar>
         </ThemeProvider>

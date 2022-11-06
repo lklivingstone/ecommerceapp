@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/Navbar/Navbar';
+import {Navbar} from '../components/Navbar/Navbar';
 import { Box, Divider, Paper, ThemeProvider, Typography } from '@material-ui/core'; 
 import { CssBaseline } from '@material-ui/core';
 import { useEffect } from 'react';
@@ -19,6 +19,7 @@ const emptySpace = styled(Typography)({
 })
 
 const Home = () => {
+    
     //Title of the page. Runs only once.
     useEffect(() => {
         document.title= "Home | e-tesst.";

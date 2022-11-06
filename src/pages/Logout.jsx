@@ -5,7 +5,8 @@ import theme from '../styles/theme/theme';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls"
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { logOut } from "../redux/userRedux";
 
 const Wrapper = styled("div")({
     width: "100%",
@@ -36,6 +37,9 @@ const Form = styled("form")({
 const Title = styled("h1")({
     margin: "10px 10px",
     fontWeight: "200",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
 })
 
 const Input = styled("input")({
@@ -88,15 +92,10 @@ const ButtonDiv = styled("div")({
     margin: "10px 0px 0px 0px"
 })
 
-const ForwardLink = styled("a")({
+const Link = styled("a")({
     margin: "5px 10px",
     fontSize: "12px",
-    textDecoration: "underline",
-    "&:hover": {
-        textDecoration: "none",
-        cursor: "pointer"
-        // backgroundColor: Colors.light_gray
-    }
+    textDecoration: "underline"
 })
 
 const Error = styled("span")({
@@ -104,16 +103,17 @@ const Error = styled("span")({
 })
 
 
-export const Login = () => {
+export const Logout = () => {
+    const user= useSelector(state=> state.user.currUser)
 
-    const [username, setUsername]= useState("")
-    const [password, setPassword]= useState("")
     const dispatch= useDispatch()
-    const { isFetching, error }= useSelector(state=>state.user)
+
+    const navigate= useNavigate()
 
     const handleClick = (e) => {
-        e.preventDefault()
-        login(dispatch, { username, password })
+        dispatch(logOut())
+
+        navigate("/")
     }
 
     return (
@@ -123,25 +123,11 @@ export const Login = () => {
                 <Wrapper>
                     <Container>
                         <Title>
-                            LOGIN
+                            Hi {user.firstname}, do you want to logout?
                         </Title>
-                        <Form>
-                            <Input placeholder="Username" onChange={(e)=>setUsername(e.target.value)}/>
-                            <Input placeholder="Password" type="password" onChange={(e)=>setPassword(e.target.value)}/>
-                            <ForwardLink>Forgot Password</ForwardLink>
-                            <ForwardLink>Create new account</ForwardLink>
-                        </Form>
-                        <div style={{display: "flex", alignItems: "center"}} >
                             <ButtonDiv>
-                                <SubmitButton variant="filled" onClick={handleClick} disabled={isFetching}>Login</SubmitButton>
+                                <SubmitButton variant="filled" onClick={handleClick}>Logout</SubmitButton>
                             </ButtonDiv>
-                            <ButtonDiv>
-                                <Link to="/register" style={{textDecoration: "none", color: "black"}} >
-                                    <ForwardLink style={{fontSize: "15px"}}>Register</ForwardLink>
-                                </Link>
-                            </ButtonDiv>
-                            {error && <Error>Something went wrong!</Error>}
-                        </div>
                     </Container>
                 </Wrapper>
             </ThemeProvider>

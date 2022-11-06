@@ -2,6 +2,8 @@ import { Box } from "@material-ui/core";
 import { styled } from "@material-ui/styles";
 import { Colors } from "../../styles/theme/theme";
 
+
+
 export const ToolsContainerMobile = styled(Box)(() => ({
     display: 'flex',
     background: Colors.shaft,
@@ -13,3 +15,6 @@ export const ToolsContainerMobile = styled(Box)(() => ({
     zIndex: 99,  
     borderTop: `1px solid ${Colors.border}`
 }));
+
+
+

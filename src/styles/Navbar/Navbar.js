@@ -10,7 +10,7 @@ import { Colors } from "../theme/theme";
 
 export const MyList = styled(List)(({ type }) => ({
     display: type === 'row' ? 'flex' : 'block',
-    flexGrow: 1,
+    flexGrow: 2,
     justifyContent: 'center',
     alignItems: 'center'
 }));

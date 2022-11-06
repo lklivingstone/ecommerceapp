@@ -4,9 +4,9 @@ import { styled } from "@mui/system";
 import { Colors } from "../../styles/theme/theme";
 import { ScaleUpCenter, slideLeft, slideTop, ScaleDownCenter } from "../../animation/Animation";
 import zIndex from "@mui/material/styles/zIndex";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SearchIcon from '@mui/icons-material/Search';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 export const Image = styled("img")(({ theme }) => ({
     height: "400px",
@@ -56,7 +56,7 @@ export const FavIconContainer = styled('div', {
         `${ScaleUpCenter} 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both`
 }));
 
-export const ShareIconContainer = styled('div', {
+export const SearchIconContainer = styled('div', {
     shouldForwardProp: (prop) => prop !== 'enter'
 })(({ enter }) => ({
     margin: "15px", 
@@ -77,7 +77,7 @@ export const ShareIconContainer = styled('div', {
 
 export const IconLayer = styled(Box, {
     shouldForwardProp: (prop) => prop !== 'show'
-})(({show}) => ({
+})(({show, theme}) => ({
     position: "absolute",
     height: "100%",
     width: "100%",
@@ -89,13 +89,16 @@ export const IconLayer = styled(Box, {
     right: 0,
     transition: "all 0.3s ease",
     opacity: 0,
+    [theme.breakpoints.down("lg")] : {
+        opacity: 1,
+    },
     "&:hover": {
         opacity: 1,
         // backgroundColor: Colors.light_gray
     }
 }));
 
-export const FavButton= styled(FavoriteIcon, {
+export const FavButton= styled(FavoriteBorderIcon, {
     shouldForwardProp: (prop) => prop !== 'isFav'
 })(({ enter, isFav }) => ({
     color: isFav ? Colors.primary : Colors.light,
@@ -104,7 +107,7 @@ export const FavButton= styled(FavoriteIcon, {
         enter && `${ScaleDownCenter} 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`
 }))
 
-export const ShoppingButton= styled(ShoppingCartIcon, {
+export const ShoppingButton= styled(ShoppingCartOutlinedIcon, {
     shouldForwardProp: (prop) => prop !== 'enter'
 })(({ enter, isAdded }) => ({
     color: isAdded ? Colors.primary : Colors.light,
@@ -113,7 +116,7 @@ export const ShoppingButton= styled(ShoppingCartIcon, {
         enter && `${ScaleDownCenter} 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`
 }));
 
-export const ShareButton= styled(ShareIcon, {
+export const SearchButton= styled(SearchIcon, {
     shouldForwardProp: (prop) => prop !== 'enter'
 })(({ enter}) => ({
     color: Colors.primary,

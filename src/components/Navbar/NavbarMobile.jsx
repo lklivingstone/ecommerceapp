@@ -5,13 +5,21 @@ import { ThemeProvider } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { ListItemButton } from '@mui/material';
 import SearchIcon from '@material-ui/icons/Search';
-import { FavoriteBorderOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import { MyList } from "../../styles/Navbar/Navbar";
-import { ToolsContainerMobile } from "./ToolbarMobile";
+import { ToolsContainerMobile } from "./NavbarComponents";
 import AppDrawer from "../AppDrawer/AppDrawer";
+import {Tools} from "./NavbarTools"
+import { FavoriteBorderOutlined, FavoriteOutlined, ShoppingCartOutlined } from "@material-ui/icons";
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import Badge from '@mui/material/Badge';
+import { useSelector } from "react-redux"
 
+export const NavbarMobile = () => {
 
-export default function NavbarMobile({ matches }) {
+    const cart= useSelector(state=>state.cart)
+
+    
+
     const classes= useStyles();
 
     return (
@@ -20,7 +28,6 @@ export default function NavbarMobile({ matches }) {
             <AppBar position= "static" >
                 <Toolbar className={classes.toolbar}>
                     <Box className={classes.flexone}>
-                        
                         <AppDrawer />
                     </Box>
                     <Box className={classes.flexone}>
@@ -38,35 +45,7 @@ export default function NavbarMobile({ matches }) {
                 </Toolbar>
             </AppBar>
             <ToolsContainerMobile>
-                <MyList type="row">
-                    <ListItemButton
-                    sx= {{
-                        display: "flex",
-                        justifyContent: "center"
-                    }}
-                    >
-                        <ListItemIcon
-                        style= {{
-                            display: "flex",
-                            justifyContent: "center"
-                        }}
-                        >
-                            <ShoppingCartOutlined style={{color: "white"}}/>
-                        </ListItemIcon>
-                    </ListItemButton>
-                    <ListItemButton
-                    sx= {{
-                        justifyContent: "center"
-                    }}>
-                        <ListItemIcon
-                        style= {{
-                            display: "flex",
-                            justifyContent: "center"
-                        }}>
-                            <FavoriteBorderOutlined style={{color: "white"}}/>
-                        </ListItemIcon>
-                    </ListItemButton>
-                </MyList>
+            <Tools />
             </ToolsContainerMobile>
         </ThemeProvider>
     );
