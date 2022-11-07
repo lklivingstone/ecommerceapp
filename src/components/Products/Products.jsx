@@ -1,19 +1,15 @@
 import { makeStyles } from "@material-ui/styles";
 import { useTheme } from "@material-ui/styles";
-import { Paper, useMediaQuery } from "@material-ui/core";
-import { products } from "../../data/data";
+import { useMediaQuery } from "@material-ui/core";
 import { Grid, Container } from "@mui/material";
 import { Box } from "@mui/system";
 import {Typography} from "@material-ui/core";
-import { Image, ShoppingIconContainer, FavIconContainer, SearchIconContainer, ShoppingButton, SearchButton, DescriptionBox } from "./ProductComponents";
-import { FavButton } from "./ProductComponents";
+import { Image, ShoppingIconContainer, SearchIconContainer, ShoppingButton, SearchButton, DescriptionBox } from "./ProductComponents";
 import { IconLayer } from "./ProductComponents";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import DesktopIconLayer from "./DesktopIconLayer";
-import MobileIconLayer from "./MobileProduct";
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -182,9 +178,11 @@ export default function Products({category, filters, sort}) {
                 <Box padding="5px 5px">
                     <Image src={product.img} />
                     <IconLayer>
+                    <Link to={`/product/${product._id}`}>
                         <ShoppingIconContainer onMouseEnter= {handleShoppingMouseEnter} onMouseLeave= {handleShoppingMouseLeave} enter={showShoppingOptions}>
                             <ShoppingButton enter={showShoppingOptions} isAdded={1} />
                         </ShoppingIconContainer>
+                    </Link>
                         {/* <FavIconContainer onMouseEnter= {handleFavMouseEnter} onMouseLeave= {handleFavMouseLeave} enter={showFavOptions}>
                             <FavButton enter={showFavOptions} isFav= {1} />
                         </FavIconContainer> */}

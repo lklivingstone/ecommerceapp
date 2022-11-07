@@ -4,8 +4,6 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from '../styles/theme/theme'
 import { CssBaseline } from '@material-ui/core';
 import { Box, styled } from "@mui/system";
-import { products } from "../data/data";
-import { Add, Remove } from "@material-ui/icons";
 import { Divider } from "@material-ui/core";
 import TextField from '@mui/material/TextField';
 import { useSelector } from "react-redux";

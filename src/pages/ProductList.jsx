@@ -3,7 +3,6 @@ import {Navbar} from "../components/Navbar/Navbar"
 import { ThemeProvider } from '@material-ui/core'; 
 import theme from '../styles/theme/theme';
 import { CssBaseline } from '@material-ui/core';
-import Slider from "../components/Slider/Slider";
 import { styled } from "@mui/system";
 import Products from "../components/Products/Products";
 import { useLocation } from "react-router-dom";

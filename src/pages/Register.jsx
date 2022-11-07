@@ -4,7 +4,6 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from '../styles/theme/theme';
 import { register } from "../redux/apiCalls";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled("div")({

@@ -1,4 +1,3 @@
-import { makeStyles } from "@material-ui/styles";
 import { ShoppingIconContainer, FavIconContainer, SearchIconContainer, ShoppingButton, SearchButton } from "./ProductComponents";
 import { FavButton } from "./ProductComponents";
 import { IconLayer } from "./ProductComponents";

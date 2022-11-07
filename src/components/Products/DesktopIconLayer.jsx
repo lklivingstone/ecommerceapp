@@ -1,16 +1,8 @@
 import { makeStyles } from "@material-ui/styles";
-import { useTheme } from "@material-ui/styles";
-import { Paper, useMediaQuery } from "@material-ui/core";
-import { products } from "../../data/data";
-import { Grid, Container } from "@mui/material";
-import { Box } from "@mui/system";
-import {Typography} from "@material-ui/core";
-import { Image, ShoppingIconContainer, FavIconContainer, SearchIconContainer, ShoppingButton, SearchButton, DescriptionBox } from "./ProductComponents";
-import { FavButton } from "./ProductComponents";
+
+import {  ShoppingIconContainer, SearchIconContainer, ShoppingButton, SearchButton } from "./ProductComponents";
 import { IconLayer } from "./ProductComponents";
 import { useState } from "react";
-import { useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({

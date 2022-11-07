@@ -2,9 +2,7 @@ import { Button, CssBaseline } from "@mui/material"
 import { styled } from "@mui/system"
 import { ThemeProvider } from '@material-ui/core'; 
 import theme from '../styles/theme/theme';
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/apiCalls"
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../redux/userRedux";
 

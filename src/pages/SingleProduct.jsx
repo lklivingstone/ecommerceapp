@@ -7,7 +7,6 @@ import { styled } from "@mui/system";
 import { Add, Remove } from "@material-ui/icons";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/shoppingCartRedux";
 import { useDispatch } from "react-redux"

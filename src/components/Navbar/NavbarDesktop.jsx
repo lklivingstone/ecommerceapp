@@ -7,15 +7,15 @@ import useStyles from '../../styles/Navbar/styles';
 import { MyList } from '../../styles/Navbar/Navbar';
 import { ListItemButton } from '@mui/material';
 import {Tools} from "./NavbarTools"
-import { FavoriteBorderOutlined, FavoriteOutlined, ShoppingCartOutlined } from "@material-ui/icons";
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import Badge from '@mui/material/Badge';
+import { useNavigate } from 'react-router-dom';
+import Scroll from 'react-scroll'
 
 
 export const NavbarDesktop = () => {
 
     const classes= useStyles();
-    
+    const navigate= useNavigate();
+    const ScrollLink = Scroll.ScrollLink
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline enableColorScheme />
@@ -27,10 +27,23 @@ export const NavbarDesktop = () => {
                         </Typography>
                     </Box>
                     <MyList type='row'>
-                        <ListItemText primary="Home"/>
-                        <ListItemText color="secondary">Products</ListItemText>
-                        <ListItemText color="inherit">Categories</ListItemText>
-                        <ListItemText>Contact Us</ListItemText>
+                        <ListItemText primary="Home" onClick= { () => navigate("/") } style={{cursor: 'pointer'} }/>
+                        <ListItemText color="secondary" onClick= { () => navigate("/") } style={{cursor: 'pointer'} }>Products</ListItemText>
+                        <ListItemText color="inherit" onClick= { () => navigate("/") } style={{cursor: 'pointer'} }>Categories</ListItemText>
+                        
+
+                            <ListItemText  onClick= { () => navigate("/") } style={{cursor: 'pointer'} }>
+                            {/* <ScrollLink 
+                            to="example-destination" 
+                            spy={true} 
+                            smooth={true} 
+                            duration={500} 
+                            className='some-class' 
+                            activeClass='some-active-class'> */}
+                                 Contact Us
+                            {/* </ScrollLink> */}
+                                
+                            </ListItemText>
                         
                         <ListItemButton>
                             <ListItemIcon>  

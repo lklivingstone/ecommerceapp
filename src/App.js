@@ -1,5 +1,5 @@
 import Home from './pages/Home';
-import { Button, CssBaseline, useMediaQuery, useTheme } from '@material-ui/core';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 import { ProductList } from './pages/ProductList';
 import { SingleProduct } from './pages/SingleProduct';
 import { Login } from './pages/Login';

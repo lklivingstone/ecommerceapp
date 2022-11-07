@@ -1,10 +1,7 @@
-import { Box } from "@material-ui/core";
-import { styled } from "@material-ui/styles";
-import { Colors } from "../../styles/theme/theme";
 import { ListItemIcon } from "@material-ui/core";
 import { ListItemButton } from "@mui/material";
 import { MyList } from "../../styles/Navbar/Navbar";
-import { FavoriteBorderOutlined, FavoriteOutlined, ShoppingCartOutlined } from "@material-ui/icons";
+import {  ShoppingCartOutlined } from "@material-ui/icons";
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import Badge from '@mui/material/Badge';
 import { Link } from "react-router-dom";
@@ -20,9 +17,6 @@ export const Tools = () => {
 
     const navigate= useNavigate()
 
-    const handleClick = (e) => {
-        navigate("/logout")
-    }
 
     return (
             <MyList type="row" style={{flexGrow:1}}>

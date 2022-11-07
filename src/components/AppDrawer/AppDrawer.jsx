@@ -5,6 +5,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from "@mui/material";
 import theme from "../../styles/theme/theme";
 import CloseIcon from '@mui/icons-material/Close';
+import { useNavigate } from 'react-router-dom';
+
 
 const CustomDrawer= styled(Drawer)(() => ({
     ".MuiDrawer-paper": {
@@ -25,6 +27,8 @@ const CustomDivider= styled(Divider)(() => ({
 
 export default function AppDrawer() {
 
+    const navigate= useNavigate();
+
     const [openDrawer, setOpenDrawer] = useState(false);
 
     return (
@@ -37,34 +41,34 @@ export default function AppDrawer() {
             <CustomDrawer open={openDrawer}
             onClose={() => setOpenDrawer(false)}
             >
-            <List>
+            <List style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <ListItemButton>
                 <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
                     <CloseIcon color="secondary"/>
-            </IconButton>
+                </IconButton>
                 </ListItemButton>
                 <ListItemButton onClick={() => setOpenDrawer(!openDrawer)}>
-                    <ListItemText>
+                    <ListItemText onClick= { () => navigate("/") }>
                         Home
                     </ListItemText>
                 </ListItemButton>
                 <ListItemButton onClick={() => setOpenDrawer(!openDrawer)}>
-                    <ListItemText>
+                    <ListItemText onClick= { () => navigate("/") }>
                         Categories
                     </ListItemText>
                 </ListItemButton>
                 <ListItemButton onClick={() => setOpenDrawer(!openDrawer)}>
-                    <ListItemText>
+                    <ListItemText onClick= { () => navigate("/") }>
                         Products
                     </ListItemText>
                 </ListItemButton>
                 <ListItemButton onClick={() => setOpenDrawer(!openDrawer)}>
-                    <ListItemText>
+                    <ListItemText onClick= { () => navigate("/") }>
                         About Us
                     </ListItemText>
                 </ListItemButton>
                 <ListItemButton onClick={() => setOpenDrawer(!openDrawer)}>
-                    <ListItemText>
+                    <ListItemText onClick= { () => navigate("/") }>
                         Contact Us
                     </ListItemText>
                 </ListItemButton>

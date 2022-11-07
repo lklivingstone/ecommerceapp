@@ -1,11 +1,13 @@
 import { styled } from "@mui/system";
-import { sliderItems } from "../../data/data";
+// import { sliderItems } from "../../data/data";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 const Container = styled('div')({
@@ -60,6 +62,20 @@ const Button = styled("Button")({
 
 
 const DesktopSlider = () => {
+
+    const [sliderItems, setSliderItems]= useState([])
+
+    useEffect(()=> {
+        const getSLiderItems= async () => {
+            try {
+                const res= await axios.get("http://localhost:5000/api/sliderItems")
+                setSliderItems(res.data)
+            } catch(err) {
+
+            }
+        }
+        getSLiderItems()
+    }, [])
      
     return (
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{"--swiper-navigation-color": "black", "--swiper-pagination-color": "#FFF"}}>
@@ -76,10 +92,12 @@ const DesktopSlider = () => {
                                 </Title>
                                 <Desc>
                                     {item.desc}
-                                </Desc>                            
-                                <Button>
-                                    SHOP NOW
-                                </Button>
+                                </Desc>
+                                <Link to={`/products/${item.category}`}>
+                                    <Button>
+                                        SHOP NOW
+                                    </Button>
+                                </Link>                            
                             </InfoCont>
                     </Slide>
                         </Container>

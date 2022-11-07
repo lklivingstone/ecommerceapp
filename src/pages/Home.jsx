@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navbar} from '../components/Navbar/Navbar';
-import { Box, Divider, Paper, ThemeProvider, Typography } from '@material-ui/core'; 
+import {  Divider, ThemeProvider, Typography } from '@material-ui/core'; 
 import { CssBaseline } from '@material-ui/core';
 import { useEffect } from 'react';
 import theme, { Colors } from '../styles/theme/theme'
@@ -9,7 +9,7 @@ import Categories from '../components/Categories/Categories';
 import { styled } from "@mui/system";
 import Products from '../components/Products/Products';
 import Footer from '../components/Footer/Footer';
-import AppDrawer from '../components/AppDrawer/AppDrawer';
+
 
 
 const emptySpace = styled(Typography)({
@@ -40,7 +40,7 @@ const Home = () => {
             </div>
             <Divider />
             <Products />
-            <Footer />
+            <Footer id='some-id'/>
         </ThemeProvider>
         </>
     )

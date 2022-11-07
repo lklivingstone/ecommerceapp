@@ -1,14 +1,29 @@
 import { Link } from "react-router-dom";
-import { categories } from "../../data/data";
+// import { categories } from "../../data/data";
 import { Button, Container, Image, InfoCont, Title, Wrapper } from "./CategoriesComponents";
-
-
-
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 const Categories = () => {
+
+    const [categories, setCategories]= useState([])
+
+    useEffect(() => {
+        const getCategories= async () => {
+            try {
+                const res= await axios.get("http://localhost:5000/api/categories")
+                setCategories(res.data)
+            } catch(err) {
+
+            }
+        }
+        getCategories()
+    }, [])
+
     return <Container>
             {categories.map((item)=> (
-                 <Link to={`/products/${item.cat}`}>
+                <Link to={`/products/${item.cat}`}>
                     <Wrapper key={item.id}>
                             <Image src={item.img} />
                             <InfoCont>
