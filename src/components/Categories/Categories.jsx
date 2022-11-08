@@ -12,7 +12,7 @@ const Categories = () => {
     useEffect(() => {
         const getCategories= async () => {
             try {
-                const res= await axios.get("http://localhost:5000/api/categories")
+                const res= await axios.get("https://tessst-dot.herokuapp.com/api/categories")
                 setCategories(res.data)
             } catch(err) {
 
@@ -20,7 +20,7 @@ const Categories = () => {
         }
         getCategories()
     }, [])
-
+    console.log(categories)
     return <Container>
             {categories.map((item)=> (
                 <Link to={`/products/${item.cat}`}>

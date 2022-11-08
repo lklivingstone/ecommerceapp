@@ -68,7 +68,7 @@ const DesktopSlider = () => {
     useEffect(()=> {
         const getSLiderItems= async () => {
             try {
-                const res= await axios.get("http://localhost:5000/api/sliderItems")
+                const res= await axios.get("https://tessst-dot.herokuapp.com/api/sliderItems")
                 setSliderItems(res.data)
             } catch(err) {
 
