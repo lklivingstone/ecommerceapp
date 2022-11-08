@@ -6,12 +6,12 @@ tessst. is built with Node.js, Mongoose, and the client is built with React. Hel
 
 ## Table of content
 
-* Why
-* Project Description
-* Links
+* [Why](#why)
+* [Project Description](#project-description)
+* [Links](#links)
 
 
-## Why?
+## Why
 
 Being interested in Web Development, I wanted my first project to be a Full Stack E Commerce Website, since it implements technologies ranging from frontend, backend and database management.
 
@@ -55,7 +55,7 @@ The following are the technologies used and a short reason for me to choose them
 
 I learnt the above mentioned technologies to build the website.
 
-### For Deployment, 
+#### For Deployment, 
 
 * The API was deployed in Heroku.
 * The Database was uploaded in MongoDB Atlas Cluster.
