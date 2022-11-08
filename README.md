@@ -6,12 +6,12 @@ tessst. is built with Node.js, Mongoose, and the client is built with React. Hel
 
 ## Table of content
 
-* Why
-* Project Description
-* Links
+* [Why](#why)
+* [Project Description](#project-description)
+* [Links](#links)
 
 
-## Why?
+## Why
 
 Being interested in Web Development, I wanted my first project to be a Full Stack E Commerce Website, since it implements technologies ranging from frontend, backend and database management.
 
@@ -52,6 +52,15 @@ The following are the technologies used and a short reason for me to choose them
 
 * Nodemon: nodemon is a tool that helps develop Node. js based applications by automatically restarting the node application when file changes in the directory are detected. nodemon does not require any additional changes to your code or method of development.
 
+
+I learnt the above mentioned technologies to build the website.
+
+#### For Deployment, 
+
+* The API was deployed in Heroku.
+* The Database was uploaded in MongoDB Atlas Cluster.
+* The Frontend was deployed in Netlify
+
 ## Links
 
-
+Link to the website: [https://tessst-dot.netlify.app/](https://tessst-dot.netlify.app/)
