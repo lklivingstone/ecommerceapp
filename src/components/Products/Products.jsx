@@ -39,7 +39,7 @@ export default function Products({category, filters, sort}) {
     useEffect(() => {
         const getProducts= async () => {
             try{
-                const res= await axios.get(category ? `https://tessst-dot.herokuapp.com/api/products?category=${category}` : "https://tessst-dot.herokuapp.com/api/products")
+                const res= await axios.get(category ? `https://tessst-dot.herokuapp.com/api/products?categories=${category}` : "https://tessst-dot.herokuapp.com/api/products")
                 setProductList(res.data)
             } catch(err) {
 

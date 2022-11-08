@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CustomDrawer= styled(Drawer)(() => ({
     ".MuiDrawer-paper": {
-        width: "30vw",
+        width: "40vw",
         color: Colors.secondary,
         background: Colors.primary,
         display: "flex",

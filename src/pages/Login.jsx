@@ -131,7 +131,7 @@ export const Login = () => {
                             <ForwardLink>Forgot Password</ForwardLink>
                             <ForwardLink>Create new account</ForwardLink>
                         </Form>
-                        <div style={{display: "flex", alignItems: "center"}} >
+                        <div style={{display: "flex", alignItems: "center", flexDirection: "column"}} >
                             <ButtonDiv>
                                 <SubmitButton variant="filled" onClick={handleClick} disabled={isFetching}>Login</SubmitButton>
                             </ButtonDiv>

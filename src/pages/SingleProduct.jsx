@@ -13,12 +13,29 @@ import { useDispatch } from "react-redux"
 
 const Wrapper = styled("div")({
     display: "flex",
-    padding: "50px"
+    padding: "50px",
+    [theme.breakpoints.down("md")] : {
+        flexDirection: "column"
+    },
 })
+
+// export const Image = styled("img")(({ theme }) => ({
+//     height: "400px",
+//     objectFit: "cover",
+//     // padding: "10px",
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     [theme.breakpoints.down("md")] : {
+//         width: "100%",
+//     }
+// }));
 
 const ImageContainer = styled("div")({
     flex: "1",
-    padding: "10px"
+    padding: "10px",
+    justifyContent: "center",
+    display: "flex"
 })
 
 const InfoContainer = styled("div")({
@@ -26,10 +43,16 @@ const InfoContainer = styled("div")({
     padding: "10px"
 })
 
-const Image = styled("img")({
-    height: "80vh",
+const Image = styled("img")(({ theme }) => ({
+    
+    [theme.breakpoints.up("md")] : {
+        height: "80vh",
+    },
+    [theme.breakpoints.down("md")] : {
+        width: "80vw",
+    },
     objectFit: "cover"
-})
+}))
 
 const Title = styled("h1")({
     fontWeight: "100",

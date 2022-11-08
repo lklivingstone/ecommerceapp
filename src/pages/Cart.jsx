@@ -221,17 +221,18 @@ export const Cart = () => {
                     <DividerContainer>
                         <Divider style={{width:'100%'}}/>
                     </DividerContainer>
+                    <h2>{product.title}</h2>
                     <Container>
                         <ProductContainer>
                             <ImageContainer>
                                 <Image src={product.img} />
                             </ImageContainer>
                             <DescriptionContainer>
-                                <h2>{product.title}</h2>
+                                
                                 <h4>Price: Rs {product.price}</h4>
                                 <h4>Color: {product.color}</h4>
                                 <h4>Size: {product.size}</h4>
-                                <Button variant="outlined" color="error" onClick={() => handleRemove(product)}>
+                                <Button style={{fontSize: "10px"}} variant="outlined" color="error" onClick={() => handleRemove(product)}>
                                     Remove Item
                                 </Button>
                             </DescriptionContainer>
