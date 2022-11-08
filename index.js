@@ -13,8 +13,8 @@ const orderRoute= require("./routes/order")
 const stripeRoute= require("./routes/stripe")
 
 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 
 app.get("/", (req, res)=> {
     res.json("server")
