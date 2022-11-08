@@ -16,9 +16,9 @@ const stripeRoute= require("./routes/stripe")
 app.use(cors())
 app.use(express.json())
 
-app.get("/", (req, res)=> {
-    res.json("server")
-})
+// app.get("/", (req, res)=> {
+//     res.json("server")
+// })
 
 mongoose.connect(
     process.env.DB_CONNECTION
