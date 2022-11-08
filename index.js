@@ -13,13 +13,12 @@ const orderRoute= require("./routes/order")
 const stripeRoute= require("./routes/stripe")
 
 
+app.use(express.json())
+app.use(cors())
 
 app.get("/", (req, res)=> {
     res.json("server")
 })
-
-app.use(express.json())
-app.use(cors())
 
 mongoose.connect(
     process.env.DB_CONNECTION
