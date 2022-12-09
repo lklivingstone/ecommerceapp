@@ -1,8 +1,8 @@
-# **tessst.**
+# **stile**
 
-tessst. is a Full Stack E Commerce website. It is built with the aim of learning many technologies used to build a full functional website. 
+stile is a Full Stack E Commerce website. It is built with the aim of learning many technologies used to build a full functional website. 
 
-tessst. is built with Node.js, Mongoose, and the client is built with React. Help from YouTube videos were taken to learn and implement the technology.
+stile is built with Node.js, Mongoose, and the client is built with React. Help from YouTube videos were taken to learn and implement the technology.
 
 ## Table of content
 
@@ -63,5 +63,5 @@ I learnt the above mentioned technologies to build the website.
 
 ## Links
 
-Link to the website: [https://tessst-dot.netlify.app/](https://tessst-dot.netlify.app/)
+Link to the website: [https://stile.netlify.app/)
 
