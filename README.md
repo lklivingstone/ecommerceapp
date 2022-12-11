@@ -57,7 +57,7 @@ I learnt the above mentioned technologies to build the website.
 
 #### For Deployment, 
 
-* The API was deployed in Heroku.
+* The API was deployed in Render.
 * The Database was uploaded in MongoDB Atlas Cluster.
 * The Frontend was deployed in Netlify
 
